@@ -1,0 +1,5 @@
+#!/usr/bin/python
+
+# place in /media/removable/SD\ Card/ directory
+# executed after successful mount
+print 'mounted /media/removable/SD Card with executable permissions'

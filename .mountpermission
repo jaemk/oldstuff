@@ -1,0 +1,31 @@
+#!/usr/bin/python
+import os
+import subprocess
+
+# !!Setup!!
+# create file '.mountpermissionline' containing the following line:
+# mount -o remount,rw,dev,exec,suid /media/removable/SD\ Card
+
+# place .mountpermission & .mountpermissionline files in ~/ directory
+# place .check file in SD Card directory: /media/removable/SD\ Card/ 
+
+# -use following lines to change permissions on mountpermissionline file
+## sudo chown root:root /home/james/.mountpermissionline
+## sudo chmod 700 /home/james/.mountpermissionline
+## sudo chmod 755 /home/james/.mountpermission
+## -below 'sudo ALL=(ALL:ALL) ALL' insert the following line (substituting your usr name)
+## james ALL=(ALL) NOPASSWD: /home/james/.mountpermissionline
+
+# -modify .bashrc to autoexecute this script (add following line)
+## ./.mountpermission
+
+def start():
+    try:
+        subprocess.check_output('sudo /home/james/.mountpermissionline',shell = True)
+        os.system('/media/removable/SD\ Card/.check') # works on sucessful mount
+    except:
+        return
+        # mount command will produce output error      
+        # print 'No SD Card Detected'
+
+start()
