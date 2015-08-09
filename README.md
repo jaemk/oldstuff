@@ -1,2 +1,3 @@
 # misc
-miscellaneous scripts 
+miscellaneous scripts
+-> crouton-automount-SD 
